@@ -173,8 +173,8 @@ onUnmounted(() => {
             class="h-full bg-gradient-to-r from-magic-pink to-white transition-all duration-100 ease-linear relative"
             :style="{ width: progress + '%' }"
         >
-          <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2">
-            <img src="/public/bts-logo.webp" class="w-5 h-5 object-contain" alt="Logo" />
+          <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 text-xs">
+              💜
           </div>
         </div>
       </div>
