@@ -23,7 +23,7 @@ const openFlower = () => {
     <div class="z-10 text-center mb-8">
       <h2 class="text-3xl md:text-5xl font-cursive text-magic-purple mb-4">El Ramo Interactivo</h2>
       <p class="text-magic-purple md:text-xl font-light opacity-80" v-if="!isOpen">
-        Haz clic para ver lo que tanto deseas...
+        Un lugar a donde quieres ir...
       </p>
       <p class="text-magic-purple md:text-xl font-bold animate-pulse" v-else>
         ¡Pronto será una realidad!
