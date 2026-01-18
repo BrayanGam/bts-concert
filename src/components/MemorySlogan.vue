@@ -7,6 +7,7 @@ const memories = [
     { id: 3, front: "2016", backImg: "/album-wings.png", msg: "WINGS: Blood Sweat & Tears" },
     { id: 4, front: "2018", backImg: "/album-ly.png", msg: "LOVE YOURSELF" },
     { id: 5, front: "2020", backImg: "/album-mots7.png", msg: "MAP OF THE SOUL: 7" },
+    { id: 7, front: "2021", backImg: "/album-butter.png", msg: "BUTTER" },
     { id: 6, front: "2022", backImg: "/album-proof.png", msg: "PROOF: Yet To Come" }
 ];
 </script>
