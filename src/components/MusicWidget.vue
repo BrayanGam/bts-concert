@@ -11,7 +11,7 @@ const playlist = ref([]);
 const displayTrack = ref({
     name: "Loading...",
     artist: "BTS",
-    art: "/mikrokosmos.png" // Default placeholder
+    art: "/mikrokosmos.png" 
 });
 
 let audio = null;
@@ -108,7 +108,6 @@ const togglePlay = () => {
 const nextTrack = () => {
     currentTrackIndex.value = (currentTrackIndex.value + 1) % playlist.value.length;
     loadTrack(currentTrackIndex.value);
-    // Auto play if it was playing, or just start playing because user clicked next
     togglePlay(); 
 };
 
@@ -116,6 +115,22 @@ const prevTrack = () => {
     currentTrackIndex.value = (currentTrackIndex.value - 1 + playlist.value.length) % playlist.value.length;
     loadTrack(currentTrackIndex.value);
     togglePlay();
+};
+
+const seek = (event) => {
+    if (!audio) return;
+    
+    const progressBar = event.currentTarget;
+    const rect = progressBar.getBoundingClientRect();
+    const clickX = event.clientX - rect.left;
+    const width = rect.width;
+    const percentage = Math.max(0, Math.min(1, clickX / width));
+    
+    const totalTime = (audio.duration && isFinite(audio.duration)) ? audio.duration : duration.value;
+    
+    audio.currentTime = percentage * totalTime;
+    currentTime.value = audio.currentTime;
+    progress.value = percentage * 100;
 };
 
 onMounted(() => {
@@ -149,14 +164,18 @@ onUnmounted(() => {
       </div>
 
       <!-- Visual Progress Bar -->
-      <div class="w-full h-4 bg-white/20 rounded-full mb-6 relative overflow-hidden cursor-pointer" title="Seek (Visual Only)">
+      <div 
+        class="w-full h-4 bg-white/20 rounded-full mb-6 relative overflow-hidden cursor-pointer" 
+        title="Click to Seek"
+        @click="seek"
+      >
         <div 
             class="h-full bg-gradient-to-r from-magic-pink to-white transition-all duration-100 ease-linear relative"
             :style="{ width: progress + '%' }"
         >
-            <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 text-xs">
-                🌸
-            </div>
+          <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2">
+            <img src="/public/bts-logo.webp" class="w-5 h-5 object-contain" alt="Logo" />
+          </div>
         </div>
       </div>
 
