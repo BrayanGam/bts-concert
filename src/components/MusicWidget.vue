@@ -19,11 +19,31 @@ let timer = null;
 
 const songsToFetch = ["BTS Dynamite", "BTS Butter", "BTS Spring Day"];
 
+// JSONP Helper to avoid CORS issues with iTunes API
+const jsonp = (url) => {
+    return new Promise((resolve, reject) => {
+        const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+        window[callbackName] = (data) => {
+            delete window[callbackName];
+            document.body.removeChild(script);
+            resolve(data);
+        };
+
+        const script = document.createElement('script');
+        script.src = `${url}${url.includes('?') ? '&' : '?'}callback=${callbackName}`;
+        script.onerror = (e) => {
+            delete window[callbackName];
+            document.body.removeChild(script);
+            reject(e);
+        };
+        document.body.appendChild(script);
+    });
+};
+
 const fetchPlaylist = async () => {
     try {
         const promises = songsToFetch.map(term => 
-            fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=music&limit=1`)
-                .then(res => res.json())
+            jsonp(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&media=music&limit=1`)
                 .then(data => data.results[0])
         );
 
