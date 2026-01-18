@@ -55,18 +55,18 @@ onMounted(() => {
       <div class="mb-4">
         <!-- Optional: Scroll svg wrapper or simple banner -->
         <h2 class="text-xl md:text-2xl font-sans tracking-widest mb-2 uppercase opacity-90">
-          Bienvenida a tu
+          Para
         </h2>
       </div>
       <h1 class="text-6xl md:text-8xl font-cursive drop-shadow-md mb-6">
-        Magic Shop
+        Camila
       </h1>
       <p class="text-lg md:text-xl font-sans font-light max-w-2xl mx-auto opacity-90">
         "En los días en que te odies a ti misma, en los días en que quieras desaparecer para siempre... hagamos una puerta en tu corazón."
       </p>
 
       <p class="mt-8 text-magic-pink text-xl md:text-2xl font-cursive font-bold animate-pulse">
-        Para Camila, mi universo favorito. 💜
+        Mi niña hermosa. 💜
       </p>
       
       <div class="mt-12 animate-bounce">
